@@ -55,6 +55,32 @@
     <p style="margin-top: 50px; opacity: 0.3; font-size: 0.8rem;">
         &copy; 2025 WatermelonDoc
     </p>
+<script>
+function createSnowflake() {
+    const snowflake = document.createElement('div');
+    snowflake.innerHTML = '❄';
+    snowflake.style.position = 'fixed';
+    snowflake.style.top = '-20px';
+    snowflake.style.left = Math.random() * window.innerWidth + 'px';
+    snowflake.style.color = 'white';
+    snowflake.style.fontSize = (Math.random() * 10 + 10) + 'px';
+    snowflake.style.opacity = Math.random();
+    snowflake.style.zIndex = '9999';
+    snowflake.style.pointerEvents = 'none'; // So users can still click buttons
+    document.body.appendChild(snowflake);
 
+    const animation = snowflake.animate([
+        { transform: `translateY(0) rotate(0deg)`, opacity: 1 },
+        { transform: `translateY(${window.innerHeight + 20}px) rotate(360deg)`, opacity: 0.3 }
+    ], {
+        duration: Math.random() * 3000 + 5000, // Falls in 5-8 seconds
+        easing: 'linear'
+    });
+
+    animation.onfinish = () => snowflake.remove();
+}
+// Create a new snowflake every 300ms
+setInterval(createSnowflake, 300);
+</script>
 </body>
 </html>
