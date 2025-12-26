@@ -8,56 +8,66 @@
     
     <title>WatermelonDoc | Games</title>
     <style>
-        body {
-            background-color: #0f172a;
-            color: white;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            margin: 0;
-            text-align: center;
-        }
-        h1 { font-size: 2.5rem; margin-bottom: 20px; }
-        .game-card {
-            background: linear-gradient(145deg, #1e293b, #0f172a);
-            padding: 30px;
-            border-radius: 20px;
-            border: 2px solid #3b82f6;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            transition: transform 0.3s ease;
-            text-decoration: none;
-            color: white;
-        }
-        .game-card:hover { transform: scale(1.05); }
-        .btn {
-            display: inline-block;
-            margin-top: 15px;
-            padding: 10px 25px;
-            background-color: #3b82f6;
-            border-radius: 8px;
-            font-weight: bold;
-        }
-        /* Festive Button Colors */
-#optionA { 
-    background-color: #B3000C !important; /* Deep Holiday Red */
-    border: 3px solid #ffffff;
-    box-shadow: 0 4px 15px rgba(179, 0, 12, 0.4);
-}
+    body {
+        /* UPDATED: Added !important and festive gradient */
+        background: linear-gradient(135deg, #001d3d 0%, #003566 100%) !important;
+        color: white;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin: 0;
+        text-align: center;
+        overflow: hidden; /* Prevents scrollbars from snowflakes */
+    }
 
-#optionB { 
-    background-color: #006400 !important; /* Dark Holly Green */
-    border: 3px solid #ffffff;
-    box-shadow: 0 4px 15px rgba(0, 100, 0, 0.4);
-}
+    h1 { font-size: 2.5rem; margin-bottom: 20px; text-shadow: 0 0 10px rgba(255,255,255,0.3); }
 
-/* Optional: Add a subtle holiday gradient to the background */
-body {
-    background: linear-gradient(135deg, #001d3d 0%, #003566 100%);
-}
-    </style>
+    .game-card {
+        background: linear-gradient(145deg, #1e293b, #0f172a);
+        padding: 30px;
+        border-radius: 20px;
+        border: 2px solid #3b82f6;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        transition: transform 0.3s ease;
+        text-decoration: none;
+        color: white;
+    }
+
+    .game-card:hover { transform: scale(1.05); }
+
+    /* The Standard Button Style */
+    .btn {
+        display: inline-block;
+        margin: 15px 10px;
+        padding: 15px 35px;
+        border-radius: 12px;
+        font-weight: bold;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: all 0.2s ease;
+    }
+
+    /* FIX: Using Classes (.red-btn) instead of IDs (#optionA) for better compatibility */
+    .red-btn { 
+        background: #B3000C !important; /* Deep Holiday Red */
+        border: 3px solid #ffffff !important;
+        box-shadow: 0 4px 15px rgba(179, 0, 12, 0.6) !important;
+    }
+
+    .green-btn { 
+        background: #006400 !important; /* Dark Holly Green */
+        border: 3px solid #ffffff !important;
+        box-shadow: 0 4px 15px rgba(0, 100, 0, 0.6) !important;
+    }
+
+    .btn:hover {
+        transform: translateY(-3px);
+        filter: brightness(1.2);
+    }
+</style>
 </head>
 <body>
 
