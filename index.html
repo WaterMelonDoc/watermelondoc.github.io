@@ -3,53 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
     <meta name="monetag" content="YOUR_CODE_HERE">
-    
     <title>WatermelonDoc | Games</title>
     <style>
     body {
-        /* Festive deep blue gradient */
         background: linear-gradient(135deg, #001d3d 0%, #003566 100%) !important;
         color: white;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center;
-        height: 100vh;
+        min-height: 100vh; /* Changed from height to min-height */
         margin: 0;
+        padding: 40px 20px; /* Added padding for spacing */
         text-align: center;
-        overflow: hidden; /* Important for snow */
+        overflow-x: hidden; /* Only hide horizontal scroll */
     }
 
     h1 { 
         font-size: 2.5rem; 
-        margin-bottom: 20px; 
+        margin-bottom: 30px; 
         text-shadow: 0 0 15px rgba(255,255,255,0.5); 
+    }
+
+    /* Container for the cards to sit side-by-side or stacked on mobile */
+    .game-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 25px;
+        justify-content: center;
+        width: 100%;
+        max-width: 1000px;
+        z-index: 10;
     }
 
     .game-card {
         background: linear-gradient(145deg, #1e293b, #0f172a);
-        padding: 40px;
+        padding: 30px;
         border-radius: 25px;
-        border: 3px solid #3b82f6; /* Blue border for the card */
+        border: 3px solid #3b82f6; 
         box-shadow: 0 15px 40px rgba(0,0,0,0.6);
         transition: transform 0.3s ease;
         text-decoration: none;
         color: white;
-        display: block;
+        flex: 1;
+        min-width: 300px; /* Ensures cards don't get too skinny */
         max-width: 400px;
     }
 
-    .game-card:hover { transform: scale(1.03); }
+    .game-card:hover { transform: scale(1.05); border-color: #ffffff; }
 
-    /* Christmas Button - Red & Glowing */
+    /* New Green Border for Personality Quiz to differentiate it */
+    .personality-border { border-color: #00c853 !important; }
+
     .btn {
         display: inline-block;
         margin-top: 20px;
-        padding: 15px 40px;
-        background-color: #B3000C !important; /* Holiday Red */
+        padding: 12px 35px;
+        background-color: #B3000C !important; 
         color: white;
         border-radius: 12px;
         font-weight: bold;
@@ -59,22 +70,18 @@
         transition: all 0.2s ease;
     }
 
-    .btn:hover {
-        filter: brightness(1.2);
-        box-shadow: 0 0 30px rgba(179, 0, 12, 1);
+    .btn-green {
+        background-color: #006400 !important; /* Forest Green Button */
+        box-shadow: 0 0 20px rgba(0, 100, 0, 0.8);
     }
 
-    /* Snowflake Style */
     .snowflake {
         color: #fff;
         font-size: 1.2em;
-        font-family: Arial, sans-serif;
-        text-shadow: 0 0 5px #000;
         position: fixed;
         top: -10%;
-        z-index: 9999;
-        user-select: none;
-        cursor: default;
+        z-index: 1;
+        pointer-events: none;
     }
     </style>
 </head>
@@ -82,11 +89,19 @@
 
     <h1>WatermelonDoc Games</h1>
     
-    <a href="https://watermelondoc.github.io/pick-a-game/" class="game-card">
-        <h2>Red vs Blue Challenge</h2>
-        <p>The ultimate holiday "Would You Rather" game.</p>
-        <div class="btn">Play Now ❄️</div>
-    </a>
+    <div class="game-container">
+        <a href="https://watermelondoc.github.io/pick-a-game/" class="game-card">
+            <h2>Red vs Blue</h2>
+            <p>The ultimate holiday "Would You Rather" challenge.</p>
+            <div class="btn">Play Now ❄️</div>
+        </a>
+
+        <a href="https://watermelondoc.github.io/personality-test/" class="game-card personality-border">
+            <h2>Archetype Quiz</h2>
+            <p>Discover which of the 4 personality types you are.</p>
+            <div class="btn btn-green">Find Out 🎭</div>
+        </a>
+    </div>
 
     <p style="margin-top: 50px; opacity: 0.5; font-size: 0.9rem;">
         &copy; 2025 WatermelonDoc | Festive Edition
@@ -98,13 +113,11 @@
         snowflake.classList.add('snowflake');
         snowflake.innerHTML = '❄';
         snowflake.style.left = Math.random() * 100 + 'vw';
-        snowflake.style.animationDuration = Math.random() * 3 + 2 + 's'; // between 2-5 seconds
         snowflake.style.opacity = Math.random();
         snowflake.style.fontSize = Math.random() * 10 + 10 + 'px';
 
         document.body.appendChild(snowflake);
 
-        // Animate the snowflake falling
         const animation = snowflake.animate([
             { transform: 'translateY(0vh) rotate(0deg)' },
             { transform: 'translateY(110vh) rotate(360deg)' }
@@ -115,8 +128,7 @@
 
         animation.onfinish = () => snowflake.remove();
     }
-
-    setInterval(createSnowflake, 200);
+    setInterval(createSnowflake, 250);
     </script>
 </body>
 </html>
